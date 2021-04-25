@@ -19,13 +19,32 @@ export default function Calculator({ textColor, activeButtonClass }) {
     });
   }, []);
 
+  const calculateOperation = (firstVal, secondVal, operator) => {
+    switch (operator) {
+      default:
+        return "no operation";
+      case "+":
+        return firstVal + secondVal;
+      case "-":
+        return firstVal - secondVal;
+      case "*":
+        return firstVal * secondVal;
+      case "/":
+        return firstVal / secondVal;
+    }
+  };
+
   //select operator + - * /
   const selectOperator = (value) => {
     if (operation.operator === "")
       setOperation({ ...operation, operator: value });
     else if (operation.value2 !== "")
       setOperation({
-        value1: eval(operation.value1 + operation.operator + operation.value2),
+        value1: calculateOperation(
+          operation.value1,
+          operation.value2,
+          operation.operator
+        ),
         operator: "",
         value2: "",
       });
@@ -53,7 +72,11 @@ export default function Calculator({ textColor, activeButtonClass }) {
   const getResult = () => {
     if (operation.value2 !== "")
       setOperation({
-        value1: eval(operation.value1 + operation.operator + operation.value2),
+        value1: calculateOperation(
+          operation.value1,
+          operation.value2,
+          operation.operator
+        ),
         operator: "",
         value2: "",
       });
