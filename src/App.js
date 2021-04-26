@@ -43,7 +43,13 @@ function App() {
         ></div>
       </div>
       <Switch>
-        <Route exact path="/" render={() => <Home />} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Home textColor={THEMES[selectedTheme].calculatorText} />
+          )}
+        />
         <Route
           exact
           path="/calculator"

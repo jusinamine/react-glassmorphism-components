@@ -21,7 +21,7 @@ const List = ({ children }) => {
   );
 };
 
-const ItemList = ({ children, link = undefined }) => {
+const ItemList = ({ children, link = undefined, textColor }) => {
   const history = useHistory();
   return (
     <div
@@ -29,6 +29,7 @@ const ItemList = ({ children, link = undefined }) => {
         if (link) history.push(link);
       }}
       className="item-list"
+      style={{ color: textColor }}
     >
       {children}
     </div>
