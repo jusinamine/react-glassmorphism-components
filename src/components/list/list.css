@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 1rem 2rem;
+  width: 400px;
+  justify-content: center;
+}
+.item-list {
+  position: relative;
+  width: 90%;
+  padding: 0.8rem 1rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 3px;
+  transition-duration: 500ms;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  text-align: center;
+}
+.item-list:hover {
+  transition-duration: 0;
+  background: rgba(255, 255, 255, 0.05);
+}

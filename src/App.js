@@ -1,40 +1,16 @@
 import "./App.css";
-import Calculator from "./components/calculator/Calculator";
-import rosePetals from "./backgrounds/Rose-Petals.svg";
-import liquidCheese from "./backgrounds/Liquid-Cheese.svg";
-import colorfulStingrays from "./backgrounds/Colorful-Stingrays.svg";
-import sunTornado from "./backgrounds/Sun-Tornado.svg";
+import React, { useState } from "react";
+import { Switch, Route, Link, useLocation } from "react-router-dom";
+import THEMES from "./themes";
 
-import { useState } from "react";
+/* components */
+import Home from "./Home";
+import Calculator from "./components/calculator/Calculator";
+import { arrowLeft } from "./icons";
 
 function App() {
-  const THEMES = [
-    {
-      svg: rosePetals,
-      color: "#dd1188",
-      calculatorText: "#fff",
-      className: "rose-petals",
-    },
-    {
-      svg: liquidCheese,
-      color: "#FFCC00",
-      calculatorText: "#000",
-      className: "liquid-cheese",
-    },
-    {
-      svg: colorfulStingrays,
-      color: "#037B79",
-      calculatorText: "#000",
-      className: "colorful-stingrays",
-    },
-    {
-      svg: sunTornado,
-      color: "#EE5522",
-      calculatorText: "#000",
-      className: "sun-tornado",
-    },
-  ];
   const [selectedTheme, setSelectedTheme] = useState(0);
+  const location = useLocation();
 
   return (
     <div
@@ -45,22 +21,40 @@ function App() {
       }}
       className="App"
     >
-      <div
-        className="choose-theme"
-        onClick={() =>
-          setSelectedTheme(
-            selectedTheme + 1 !== THEMES.length ? selectedTheme + 1 : 0
-          )
-        }
-        style={{
-          backgroundImage: `url('${THEMES[selectedTheme].svg}')`,
-          borderColor: THEMES[selectedTheme].color,
-        }}
-      ></div>
-      <Calculator
-        textColor={THEMES[selectedTheme].calculatorText}
-        activeButtonClass={THEMES[selectedTheme].className}
-      />
+      <div className="absolute-container">
+        {location.pathname !== "/" && (
+          <Link to="/">
+            <div className="back-to-home">
+              {arrowLeft(THEMES[selectedTheme].calculatorText, "icon")}
+            </div>
+          </Link>
+        )}
+        <div
+          className="choose-theme"
+          onClick={() =>
+            setSelectedTheme(
+              selectedTheme + 1 !== THEMES.length ? selectedTheme + 1 : 0
+            )
+          }
+          style={{
+            backgroundImage: `url('${THEMES[selectedTheme].svg}')`,
+            borderColor: THEMES[selectedTheme].color,
+          }}
+        ></div>
+      </div>
+      <Switch>
+        <Route exact path="/" render={() => <Home />} />
+        <Route
+          exact
+          path="/calculator"
+          render={() => (
+            <Calculator
+              textColor={THEMES[selectedTheme].calculatorText}
+              activeButtonClass={THEMES[selectedTheme].className}
+            />
+          )}
+        />
+      </Switch>
     </div>
   );
 }
