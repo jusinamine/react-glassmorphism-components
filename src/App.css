@@ -52,3 +52,9 @@
 .back-to-home .icon {
   width: 16px;
 }
+
+h3,
+h5,
+p {
+  margin: 0;
+}

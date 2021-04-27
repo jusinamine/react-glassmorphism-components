@@ -7,6 +7,7 @@ import THEMES from "./themes";
 import Home from "./Home";
 import Calculator from "./components/calculator/Calculator";
 import { arrowLeft } from "./icons";
+import CreditCard from "./components/credit_card/CreditCard";
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState(0);
@@ -25,7 +26,7 @@ function App() {
         {location.pathname !== "/" && (
           <Link to="/">
             <div className="back-to-home">
-              {arrowLeft(THEMES[selectedTheme].calculatorText, "icon")}
+              {arrowLeft(THEMES[selectedTheme].textColor, "icon")}
             </div>
           </Link>
         )}
@@ -46,18 +47,23 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => (
-            <Home textColor={THEMES[selectedTheme].calculatorText} />
-          )}
+          render={() => <Home textColor={THEMES[selectedTheme].textColor} />}
         />
         <Route
           exact
           path="/calculator"
           render={() => (
             <Calculator
-              textColor={THEMES[selectedTheme].calculatorText}
+              textColor={THEMES[selectedTheme].textColor}
               activeButtonClass={THEMES[selectedTheme].className}
             />
+          )}
+        />
+        <Route
+          exact
+          path="/credit-card"
+          render={() => (
+            <CreditCard textColor={THEMES[selectedTheme].textColor} />
           )}
         />
       </Switch>

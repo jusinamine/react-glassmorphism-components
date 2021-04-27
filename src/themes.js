@@ -8,25 +8,25 @@ const THEMES = [
   {
     svg: rosePetals,
     color: "#dd1188",
-    calculatorText: "#fff",
+    textColor: "#fff",
     className: "rose-petals",
   },
   {
     svg: liquidCheese,
     color: "#FFCC00",
-    calculatorText: "#000",
+    textColor: "#000",
     className: "liquid-cheese",
   },
   {
     svg: colorfulStingrays,
     color: "#037B79",
-    calculatorText: "#000",
+    textColor: "#000",
     className: "colorful-stingrays",
   },
   {
     svg: sunTornado,
     color: "#EE5522",
-    calculatorText: "#000",
+    textColor: "#000",
     className: "sun-tornado",
   },
 ];
