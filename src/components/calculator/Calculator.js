@@ -24,7 +24,7 @@ export default function Calculator({ textColor, activeButtonClass }) {
       default:
         return "no operation";
       case "+":
-        return firstVal + secondVal;
+        return +firstVal + +secondVal;
       case "-":
         return firstVal - secondVal;
       case "*":
